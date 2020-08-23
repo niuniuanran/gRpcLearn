@@ -11,11 +11,11 @@ namespace GrpcGreeterClient
         static async Task Main(string[] args)
         {
             // The port number(5001) must match the port of the gRPC server.
-            using var channel = GrpcChannel.ForAddress("https://localhost:5001");
-            var client = new Greeter.GreeterClient(channel);
+            using var channel = GrpcChannel.ForAddress("https://localhost:5001"); // Initiate a GrpcChannel containing the information for creating the connection to the gRPC service
+            var client = new Greeter.GreeterClient(channel); // Using the GrpcChannel to construct the Greeter client
             var reply = await client.SayHelloAsync(
-                              new HelloRequest { Name = "GreeterClient" });
-            Console.WriteLine("Greeting: " + reply.Message);
+                              new HelloRequest { Name = "GreeterClient" }); // call the asynchronous remote process, `HelloRequest`.
+            Console.WriteLine("Greeting: " + reply.Message); 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
